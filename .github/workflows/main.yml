@@ -1,6 +1,10 @@
 name: Primer workflow
 
-on: push
+on:
+  push:
+    branches:
+      - main
+      - nuevafeature
 
 jobs:
   test:
@@ -12,6 +16,7 @@ jobs:
         run: python3 main.py
   build-push:
     runs-on: ubuntu-latest
+    needs: test
     steps:
       - name: Bajar codigo
         uses: actions/checkout@v4
